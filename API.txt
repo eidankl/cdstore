@@ -1,0 +1,92 @@
+BestSellerCDEver Web Service API
+
+This web application represents sold CD's from inventory.
+Each disk has a ID, Name, Month (when sold) and Price.
+The CD's are returned as Json Obj contain Array of CD's.
+Requests worke with get methods
+
+Json Array example with 2 CD's:
+{
+	"CDStock":[
+		{
+			"ID":"111",
+			"Name":"Eric Clepton",
+			"Month":"May",
+			"Price":"88"
+		},
+		{
+			"ID":"555",
+			"Name":"Arik Ainshtein",
+			"Month":"April",
+			"Price":"88"
+		}
+	]
+}	
+	
+
+Functions:
+
+ getCD(): return all the CD that sold from stock, if there is no sold CD print "There is no CD"
+	No param
+	Return type:Json with all CD's 
+
+ getCDByMonth(month): return all the CD that sold at specific month,, if there is no matching print "NO match --> There is no CD that sold this month(month)"
+ 	1 Param:Month
+	Return type:Json
+ 
+ getCDByMonthAndName(month,name): return all the CD that sold at specific month with specific name,if there is no match print NO match --> There is no CD that sold this month(month) with the name(name) 
+	2 Param:Month & Name
+	Return type: Json (stack with CD's obj)
+ 
+
+How to work with local host and URL:FIRST LETTER (month and name) MUST BE CAPITAL LETTER!!!!
+  ROOT: 
+ http://localhost:3000/
+ https://bestsellercd.herokuapp.com 
+  getCD: 
+ http://localhost:3000/cd
+ https://bestsellercd.herokuapp.com/month?Month=April
+  getCDByMonth:
+ http://localhost:3000/month?Month=April  
+  getCDByMonthAndName:
+ http://localhost:3000/monthAndName?Month=June&&Name=John Lenon	
+ https://bestsellercd.herokuapp.com/monthAndName?Month=June&&Name=John Lenon
+
+
+
+Module function called:
+	CD.getCD();--> return all CDStock (9 CD's with their info, ID's: 111,222,333,...,999)
+	CD.getCDByMonth('April');-->return  {
+   						 "Name": "Arik Ainshtein",
+    						 "ID": "555",
+  						 "Month": "April",
+    						 "Price": "88"
+  					    },
+  					    {
+    						"Name": "Dudu Tasa",
+    						"ID": "888",
+    						"Month": "April",
+    						"Price": "88"
+  					    }
+	CD.getCDByMonth('september');-->return empty obj print to console no match
+	CD.getCDByMonthAndName('April','Arik Ainshtein');-->return empty obj print to console no match
+	CD.getCDByMonthAndName('April','Arik');--> return 
+ 							 {
+  							  "Name": "Arik Ainshtein",
+  							  "ID": "555",
+   							  "Month": "April",
+   							   "Price": "88"
+  							}
+
+
+
+
+
+
+
+
+
+
+itHub: https://github.com/eidankl/WS_ex_02_BestSellerCD.git
+	
+			  
